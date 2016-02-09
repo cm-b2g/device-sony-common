@@ -255,6 +255,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.qualcomm.sns.hal=0 \
     debug.qualcomm.sns.libsensor1=0
 
+# Updates from FXP GitHub
+EXPORT_DEVICE_PREFS := device/sony/common/prefs
+
 # for Gecko to support virtual home button
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.moz.has_home_button=0
