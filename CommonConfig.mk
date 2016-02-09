@@ -25,10 +25,13 @@ BOARD_KERNEL_CMDLINE += msm_rtb.filter=0x3F ehci-hcd.park=3
 BOARD_KERNEL_CMDLINE += dwc3.maximum_speed=high dwc3_msm.prop_chg_detect=Y
 BOARD_KERNEL_CMDLINE += coherent_pool=8M
 
+BUILD_KERNEL := false
+TARGET_KERNEL_SOURCE := kernel/sony/msm
+
 BOARD_KERNEL_BOOTIMG := true
 BOARD_CUSTOM_MKBOOTIMG := mkqcdtbootimg
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
-BOARD_MKBOOTIMG_ARGS += --dt_dir $(OUT)/dtbs
+BOARD_MKBOOTIMG_ARGS += --dt_dir $(OUT)/obj/KERNEL_OBJ/arch/arm/boot/dts
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -74,9 +77,6 @@ ifeq ($(HOST_OS),linux)
   endif
 endif
 
-BUILD_KERNEL := true
--include vendor/sony/kernel/KernelConfig.mk
-
 # Include build helpers for QCOM proprietary
 -include vendor/qcom/proprietary/common/build/proprietary-build.mk
 
@@ -108,3 +108,5 @@ BOARD_SEPOLICY_UNION += \
     genfs_contexts \
     property_contexts \
     service_contexts
+
+include vendor/cm/BoardConfig.mk

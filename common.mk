@@ -300,3 +300,5 @@ PRODUCT_PACKAGES += \
 # For Gecko to support Bluetooth
 PRODUCT_PACKAGES += \
     bluetooth.default
+
+$(call inherit-product-if-exists, vendor/cm/config/common_full.mk)
