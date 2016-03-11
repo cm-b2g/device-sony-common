@@ -109,4 +109,7 @@ BOARD_SEPOLICY_UNION += \
     property_contexts \
     service_contexts
 
+# Set Gecko toolchain for all Sony devices
+GECKO_TOOLS_PREFIX = prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-
+
 include vendor/cm/BoardConfig.mk
